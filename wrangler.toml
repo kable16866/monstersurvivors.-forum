@@ -1,0 +1,17 @@
+name = "gamehub"
+compatibility_date = "2024-01-15"
+
+[env.production]
+name = "gamehub-production"
+
+[site]
+bucket = "./dist"
+
+# Custom domains
+[[env.production.routes]]
+pattern = "www.monstersurvivors.forum/*"
+custom_domain = true
+
+[[env.production.routes]]
+pattern = "monstersurvivors.forum/*"
+custom_domain = true 

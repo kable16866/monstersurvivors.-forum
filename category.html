@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Categories - GameHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/category.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <span class="logo-text">GameHub</span>
+                    </a>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+                    <button class="search-btn" onclick="searchGames()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <!-- Back to Home -->
+                <div class="nav-actions">
+                    <a href="index.html" class="btn-back">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Category Header -->
+        <section class="category-header">
+            <div class="container">
+                <h1 class="category-title">Game Categories</h1>
+                <p class="category-subtitle">Explore various exciting games and find your favorite genres</p>
+            </div>
+        </section>
+
+        <!-- Filter and Category Section -->
+        <section class="filter-section">
+            <div class="container">
+                <!-- Category Tabs -->
+                <div class="category-tabs">
+                    <button class="category-tab active" data-category="all">
+                        <i class="fas fa-th"></i> All Games
+                    </button>
+                    <button class="category-tab" data-category="action">
+                        <i class="fas fa-fist-raised"></i> Action Games
+                    </button>
+                    <button class="category-tab" data-category="puzzle">
+                        <i class="fas fa-puzzle-piece"></i> Puzzle Games
+                    </button>
+                    <button class="category-tab" data-category="adventure">
+                        <i class="fas fa-map"></i> Adventure Games
+                    </button>
+                    <button class="category-tab" data-category="racing">
+                        <i class="fas fa-flag-checkered"></i> Racing Games
+                    </button>
+                    <button class="category-tab" data-category="strategy">
+                        <i class="fas fa-chess"></i> Strategy Games
+                    </button>
+                    <button class="category-tab" data-category="arcade">
+                        <i class="fas fa-ghost"></i> Arcade Games
+                    </button>
+                </div>
+
+                <!-- Filter Options -->
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="sortSelect">Sort by:</label>
+                        <select id="sortSelect" class="filter-select">
+                            <option value="popularity">Most Popular</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="newest">Newest</option>
+                            <option value="name">Alphabetical</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="ratingFilter">Min Rating:</label>
+                        <select id="ratingFilter" class="filter-select">
+                            <option value="0">Any Rating</option>
+                            <option value="3">3.0+ Stars</option>
+                            <option value="4">4.0+ Stars</option>
+                            <option value="4.5">4.5+ Stars</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="tagFilter">Game Tags:</label>
+                        <select id="tagFilter" class="filter-select">
+                            <option value="">All Tags</option>
+                            <option value="Multiplayer">Multiplayer</option>
+                            <option value="3D">3D</option>
+                            <option value="Shooting">Shooting</option>
+                            <option value="Strategy">Strategy</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Classic">Classic</option>
+                        </select>
+                    </div>
+
+                    <button class="clear-filters-btn" onclick="clearAllFilters()">
+                        <i class="fas fa-times"></i> Clear Filters
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Listing -->
+        <section class="games-listing">
+            <div class="container">
+                <!-- Results Info -->
+                <div class="results-info">
+                    <span id="resultsCount">Loading...</span>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" onclick="setViewMode('grid')">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" onclick="setViewMode('list')">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Games Grid -->
+                <div id="gamesContainer" class="games-container grid-view">
+                    <!-- Game cards will be loaded dynamically via JS -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button id="loadMoreBtn" class="load-more-btn" onclick="loadMoreGames()">
+                        <i class="fas fa-plus"></i> Load More Games
+                    </button>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="no-results-message" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No games found</h3>
+                    <p>Try adjusting your filter criteria or search for different keywords</p>
+                    <button class="btn-reset" onclick="resetFilters()">Reset Filters</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GameHub</h3>
+                    <p>The ultimate destination for premium online gaming experiences</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Game Categories</h4>
+                    <ul>
+                        <li><a href="category.html?category=action">Action Games</a></li>
+                        <li><a href="category.html?category=puzzle">Puzzle Games</a></li>
+                        <li><a href="category.html?category=adventure">Adventure Games</a></li>
+                        <li><a href="category.html?category=racing">Racing Games</a></li>
+                        <li><a href="category.html?category=strategy">Strategy Games</a></li>
+                        <li><a href="category.html?category=arcade">Arcade Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#about">About Website</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GameHub. All rights reserved. | Made with ❤️ for gamers worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/gameData.js"></script>
+    <script src="js/performance-utils.js"></script>
+    <script src="js/category.js"></script>
+</body>
+</html> 

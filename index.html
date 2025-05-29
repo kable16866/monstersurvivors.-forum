@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Premium Gaming Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <img src="images/logo.svg" alt="GameHub" class="logo-img">
+                    <span class="logo-text">GameHub</span>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search games..." class="search-input">
+                    <button class="search-btn" onclick="searchGames()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <!-- Category Navigation -->
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-category="all">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="action">Action</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="puzzle">Puzzle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="adventure">Adventure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="racing">Racing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="strategy">Strategy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-category="arcade">Arcade</a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Menu Button -->
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Featured Games Carousel -->
+        <section class="hero-section">
+            <div class="hero-slider">
+                <div class="hero-slide active">
+                    <div class="hero-content">
+                        <h1>Among Us Online</h1>
+                        <p>Play the viral social deduction game online! Find the impostor among your crewmates in this thrilling multiplayer experience.</p>
+                        <button class="play-btn" onclick="playGame('among-us-online')">
+                            <i class="fas fa-play"></i> Play Now
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://img.itch.zone/aW1hZ2UvNzc2MDU0LzQzNDMzNTcucG5n/original/S%2BNOcf.png" alt="Among Us Online">
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <div class="hero-content">
+                        <h1>Minecraft Classic</h1>
+                        <p>Build, explore, and create in the classic version of the world's most popular sandbox game. Unleash your creativity!</p>
+                        <button class="play-btn" onclick="playGame('minecraft-classic')">
+                            <i class="fas fa-play"></i> Play Now
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://img.itch.zone/aW1hZ2UvMTQ2NzE5LzY3ODkxMi5wbmc=/original/vY%2BSrQ.png" alt="Minecraft Classic">
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <div class="hero-content">
+                        <h1>Drift Hunters</h1>
+                        <p>Experience realistic drifting physics in this amazing racing game. Customize cars and master the art of drifting.</p>
+                        <button class="play-btn" onclick="playGame('drift-hunters')">
+                            <i class="fas fa-play"></i> Play Now
+                        </button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://img.itch.zone/aW1hZ2UvMTI0Nzg5LzU3OTg4Ni5wbmc=/original/2K%2BfhS.png" alt="Drift Hunters">
+                    </div>
+                </div>
+            </div>
+            <!-- Hero Navigation Dots -->
+            <div class="hero-nav">
+                <button class="hero-nav-btn active" onclick="showSlide(0)"></button>
+                <button class="hero-nav-btn" onclick="showSlide(1)"></button>
+                <button class="hero-nav-btn" onclick="showSlide(2)"></button>
+            </div>
+        </section>
+
+        <!-- Games Sections -->
+        <section class="games-section">
+            <div class="container">
+                <!-- Hot Games -->
+                <div class="section-block">
+                    <div class="section-header">
+                        <h2><i class="fas fa-fire"></i> Hot Games</h2>
+                        <a href="category.html?type=hot" class="more-link">View More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="games-grid" id="hotGames">
+                        <!-- Game cards will be loaded dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- New Games -->
+                <div class="section-block">
+                    <div class="section-header">
+                        <h2><i class="fas fa-star"></i> New Games</h2>
+                        <a href="category.html?type=new" class="more-link">View More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="games-grid" id="newGames">
+                        <!-- Game cards will be loaded dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Recommended Games -->
+                <div class="section-block">
+                    <div class="section-header">
+                        <h2><i class="fas fa-thumbs-up"></i> Editor's Choice</h2>
+                        <a href="category.html?type=recommended" class="more-link">View More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="games-grid" id="recommendedGames">
+                        <!-- Game cards will be loaded dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Featured Games -->
+                <div class="section-block">
+                    <div class="section-header">
+                        <h2><i class="fas fa-crown"></i> Featured Games</h2>
+                        <a href="category.html?type=featured" class="more-link">View More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="games-grid" id="featuredGames">
+                        <!-- Game cards will be loaded dynamically via JS -->
+                    </div>
+                </div>
+
+                <!-- Browse by Category -->
+                <div class="section-block">
+                    <div class="section-header">
+                        <h2><i class="fas fa-th-large"></i> Browse by Category</h2>
+                    </div>
+                    <div class="category-grid">
+                        <div class="category-card" onclick="filterByCategory('action')">
+                            <i class="fas fa-fist-raised"></i>
+                            <h3>Action Games</h3>
+                            <p>Fast-paced thrilling games</p>
+                        </div>
+                        <div class="category-card" onclick="filterByCategory('puzzle')">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h3>Puzzle Games</h3>
+                            <p>Brain teasing challenges</p>
+                        </div>
+                        <div class="category-card" onclick="filterByCategory('adventure')">
+                            <i class="fas fa-map"></i>
+                            <h3>Adventure Games</h3>
+                            <p>Epic quests and exploration</p>
+                        </div>
+                        <div class="category-card" onclick="filterByCategory('racing')">
+                            <i class="fas fa-flag-checkered"></i>
+                            <h3>Racing Games</h3>
+                            <p>High-speed racing action</p>
+                        </div>
+                        <div class="category-card" onclick="filterByCategory('strategy')">
+                            <i class="fas fa-chess"></i>
+                            <h3>Strategy Games</h3>
+                            <p>Tactical thinking required</p>
+                        </div>
+                        <div class="category-card" onclick="filterByCategory('arcade')">
+                            <i class="fas fa-ghost"></i>
+                            <h3>Arcade Games</h3>
+                            <p>Classic retro gaming</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GameHub</h3>
+                    <p>The ultimate destination for premium online gaming experiences</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Game Categories</h4>
+                    <ul>
+                        <li><a href="category.html?category=action">Action Games</a></li>
+                        <li><a href="category.html?category=puzzle">Puzzle Games</a></li>
+                        <li><a href="category.html?category=adventure">Adventure Games</a></li>
+                        <li><a href="category.html?category=racing">Racing Games</a></li>
+                        <li><a href="category.html?category=strategy">Strategy Games</a></li>
+                        <li><a href="category.html?category=arcade">Arcade Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#trending">Trending Games</a></li>
+                        <li><a href="#new">New Releases</a></li>
+                        <li><a href="#top">Top Rated</a></li>
+                        <li><a href="#random">Random Game</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GameHub. All rights reserved. | Made with ❤️ for gamers worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/gameData.js"></script>
+    <script src="js/performance-utils.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

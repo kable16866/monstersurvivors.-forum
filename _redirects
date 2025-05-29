@@ -1,0 +1,11 @@
+# Cloudflare Pages Redirects
+# Handle SPA routing
+/*    /index.html   200
+
+# Force HTTPS
+http://monstersurvivors.forum/*   https://www.monstersurvivors.forum/:splat   301!
+http://www.monstersurvivors.forum/*   https://www.monstersurvivors.forum/:splat   301!
+
+# SEO redirects
+/games/*   /category.html?category=:splat   302
+/search/*   /category.html?search=:splat   302 

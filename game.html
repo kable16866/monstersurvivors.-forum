@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="gameTitle">Game Page - GameHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <span class="logo-text">GameHub</span>
+                    </a>
+                </div>
+                <div class="nav-controls">
+                    <button class="back-btn" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button class="home-btn" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i> Home
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Game Section -->
+        <section class="game-section">
+            <div class="container">
+                <div class="game-container">
+                    <!-- Game Player -->
+                    <div class="game-player">
+                        <div class="game-frame" id="gameFrame">
+                            <div class="loading-placeholder">
+                                <div class="spinner"></div>
+                                <p>Loading game...</p>
+                            </div>
+                        </div>
+                        <div class="game-controls">
+                            <button class="control-btn" id="fullscreenBtn" onclick="toggleFullscreen()">
+                                <i class="fas fa-expand"></i> Fullscreen
+                            </button>
+                            <button class="control-btn" id="refreshBtn" onclick="refreshGame()">
+                                <i class="fas fa-redo"></i> Restart
+                            </button>
+                            <button class="control-btn" id="shareBtn" onclick="shareGame()">
+                                <i class="fas fa-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Game Information -->
+                    <div class="game-info-panel">
+                        <div class="game-header">
+                            <div class="game-title-section">
+                                <h1 id="gameDisplayTitle">Game Title</h1>
+                                <div class="game-rating">
+                                    <div class="stars" id="gameStars"></div>
+                                    <span id="gameRating">0.0</span>
+                                    <span class="rating-count" id="ratingCount">(0 ratings)</span>
+                                </div>
+                            </div>
+                            <div class="game-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-play"></i>
+                                    <span id="gamePlays">0</span> plays
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span id="gameDate">Release Date</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-user"></i>
+                                    <span id="gameDeveloper">Developer</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game Description -->
+                        <div class="game-description">
+                            <h3>About This Game</h3>
+                            <p id="gameDescription">Game description will be displayed here...</p>
+                        </div>
+
+                        <!-- Game Instructions -->
+                        <div class="game-instructions">
+                            <h3>How to Play</h3>
+                            <div class="instructions-content" id="gameInstructions">
+                                <p>Game instructions will be displayed here...</p>
+                            </div>
+                        </div>
+
+                        <!-- Game Tags -->
+                        <div class="game-tags-section">
+                            <h3>Game Tags</h3>
+                            <div class="tags-container" id="gameTags">
+                                <!-- Tags will be added dynamically via JS -->
+                            </div>
+                        </div>
+
+                        <!-- Share Section -->
+                        <div class="share-section">
+                            <h3>Share This Game</h3>
+                            <div class="share-buttons">
+                                <button class="share-btn" onclick="copyGameLink()">
+                                    <i class="fas fa-link"></i> Copy Link
+                                </button>
+                                <button class="share-btn" onclick="shareToTwitter()">
+                                    <i class="fab fa-twitter"></i> Twitter
+                                </button>
+                                <button class="share-btn" onclick="shareToFacebook()">
+                                    <i class="fab fa-facebook"></i> Facebook
+                                </button>
+                                <button class="share-btn" onclick="shareToReddit()">
+                                    <i class="fab fa-reddit"></i> Reddit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Games Section -->
+        <section class="related-games-section">
+            <div class="container">
+                <h2><i class="fas fa-gamepad"></i> You Might Also Like</h2>
+                <div class="games-grid" id="relatedGames">
+                    <!-- Related games will be loaded dynamically via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GameHub</h3>
+                    <p>The ultimate destination for premium online gaming experiences</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Back to Home</a></li>
+                        <li><a href="category.html">Browse Games</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Game Categories</h4>
+                    <ul>
+                        <li><a href="category.html?category=action">Action Games</a></li>
+                        <li><a href="category.html?category=puzzle">Puzzle Games</a></li>
+                        <li><a href="category.html?category=adventure">Adventure Games</a></li>
+                        <li><a href="category.html?category=racing">Racing Games</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GameHub. All rights reserved. | Made with ❤️ for gamers worldwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fullscreen Overlay -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <div class="fullscreen-game">
+            <div class="fullscreen-controls">
+                <button class="exit-fullscreen" onclick="exitFullscreen()">
+                    <i class="fas fa-times"></i> Exit Fullscreen
+                </button>
+            </div>
+            <div class="fullscreen-frame" id="fullscreenFrame">
+                <!-- Fullscreen game iframe will be here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Link copied to clipboard!</span>
+    </div>
+
+    <script src="js/gameData.js"></script>
+    <script src="js/performance-utils.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html> 
